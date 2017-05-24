@@ -1,0 +1,8 @@
+---
+applications:
+- name: asciimazesolver
+  memory: 256M
+  instances: 1
+  host: solver-rest-service
+  domain: itguanxi.com
+  path: build/libs/asciimazesolver-0.1.0.jar

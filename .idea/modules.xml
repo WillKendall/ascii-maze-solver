@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/asciimazesolver.iml" filepath="$PROJECT_DIR$/asciimazesolver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/asciimazesolver_main.iml" filepath="$PROJECT_DIR$/.idea/modules/asciimazesolver_main.iml" group="asciimazesolver" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/asciimazesolver_test.iml" filepath="$PROJECT_DIR$/.idea/modules/asciimazesolver_test.iml" group="asciimazesolver" />
+    </modules>
+  </component>
+</project>
