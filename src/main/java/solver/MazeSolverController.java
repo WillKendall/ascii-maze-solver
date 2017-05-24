@@ -23,6 +23,13 @@ public class MazeSolverController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public CorrectPath solveMaze(@RequestBody String[] asciiMaze)   {
+        //first, convert asciiMaze input into a tree
+        //second, traverse tree to find end, keeping track of correct path to end
+        //third, return correct path
 
+        //first, convert asciiMaze input into a tree
+
+        return null;
+        //TODO: fix return null
     }
 }
