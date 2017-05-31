@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import solver.model.AsciiMazeTree;
 
 @RestController
 public class MazeSolverController {
@@ -11,7 +12,7 @@ public class MazeSolverController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    //@RequestMapping("/solver")
+    //@RequestMapping("/greeting")
     @RequestMapping(value = "/greeting", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -28,8 +29,9 @@ public class MazeSolverController {
         //third, return correct path
 
         //first, convert asciiMaze input into a tree
+        final AsciiMazeTree mazeTree = new AsciiMazeTree(asciiMaze);
 
-        return null;
         //TODO: fix return null
+        return null;
     }
 }

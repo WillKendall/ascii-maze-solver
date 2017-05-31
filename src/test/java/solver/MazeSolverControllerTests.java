@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package hello;
+package solver;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,30 +26,41 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GreetingControllerTests {
+public class MazeSolverControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
 
+//    @Test
+//    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
+//
+//        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
+//                .andExpect(jsonPath("$.content").value("Hello, World!"));
+//    }
+//
+//    @Test
+//    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
+//
+//        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
+//                .andDo(print()).andExpect(status().isOk())
+//                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+//    }
+
     @Test
-    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
+    public void paramMazeShouldReturnSolutionMessage() throws Exception {
 
-        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
-    }
-
-    @Test
-    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
-
-        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
+        this.mockMvc.perform(post("/solver")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content("[	\"+-+-+-+-+-+-+-+\", \"&     |   |   |\" ]"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+                .andExpect(jsonPath("$.content").value("+-+-+-+-+-+-+-+"));
     }
 
 }
