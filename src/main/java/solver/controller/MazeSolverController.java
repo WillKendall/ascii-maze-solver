@@ -1,9 +1,12 @@
-package solver;
+package solver.controller;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import solver.model.CorrectPath;
+import solver.Greeting;
 import solver.model.AsciiMazeTree;
 
 @RestController
@@ -31,7 +34,16 @@ public class MazeSolverController {
         //first, convert asciiMaze input into a tree
         final AsciiMazeTree mazeTree = new AsciiMazeTree(asciiMaze);
 
-        //TODO: fix return null
-        return null;
+        //second, traverse tree to find end, keeping track of correct path to end
+        MazeSolver ms = new MazeSolver(mazeTree.getHead());
+        CorrectPath solution = null;
+        try {
+            solution = ms.findpath();
+        } catch(Exception e)    {
+            solution = new CorrectPath();
+            solution.add(e.getMessage());
+        }
+
+        return solution;
     }
 }

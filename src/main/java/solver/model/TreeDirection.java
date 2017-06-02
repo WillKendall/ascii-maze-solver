@@ -5,22 +5,31 @@ package solver.model;
  */
 public class TreeDirection {
 
-    private final Character direction;
+    private final Character dirChar;
+    private boolean toStart;
     private TreeNode node;
 
-    public TreeDirection(Character direction) {
-        this.direction = direction;
+    public TreeDirection(Character dirChar) {
+        this.dirChar = dirChar;
+        this.toStart = false;
         this.node = null;
     }
 
-    public TreeDirection(Character direction, TreeNode node) {
-        this.direction = direction;
+    public TreeDirection(Character dirChar, TreeNode node) {
+        this.dirChar = dirChar;
+        this.toStart = false;
         this.node = node;
     }
 
-    public char getDirection() {
-        return direction;
+    public char getDirChar() {
+        return dirChar;
     }
+
+    public boolean isToStart() {
+        return toStart;
+    }
+
+    public void setToStart(boolean toStart) { this.toStart = toStart; }
 
     public TreeNode getNode() {
         return node;

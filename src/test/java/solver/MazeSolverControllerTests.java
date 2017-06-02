@@ -58,7 +58,7 @@ public class MazeSolverControllerTests {
 
         this.mockMvc.perform(post("/solver")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content("[	\"+-+-+-+-+-+-+-+\", \"&     |   |   |\" ]"))
+                    .content("[	\"+-+-+-+-+-+-+-+\", \"&     |   |   |\", \" + +-+-+ + + +-+\", \"| |   | | |   |\", \"+ + + + + +-+ +\", \"|   |   |     |\", \"+-+-+-+-+ +-+ +\", \"|         |   |\", \"+ +-+-+-+-+-+-+\", \"|   |         |\", \"+-+ +-+-+-+ + +\", \"|   |   |   | |\", \"+ +-+ + + +-+ +\", \"|     |   |   *\", \"+-+-+-+-+-+-+-+\" ]"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").value("+-+-+-+-+-+-+-+"));
     }

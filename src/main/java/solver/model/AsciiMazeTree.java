@@ -50,17 +50,17 @@ public class AsciiMazeTree {
     	//Link the node above
     	if (nodeExists((row-1), col))	{
     		//This node's up points to the above node
-			this.treeArray[row][col].up.setNode(this.treeArray[row-1][col]);
+			this.treeArray[row][col].directions.get("up").setNode(this.treeArray[row-1][col]);
 			//The above node's down points to this node
-			this.treeArray[row-1][col].down.setNode(this.treeArray[row][col]);
+			this.treeArray[row-1][col].directions.get("down").setNode(this.treeArray[row][col]);
 		}
 
 		//Link the node to the left
 		if (nodeExists(row, (col-1)))	{
     		//This node's left points to the previous node
-			this.treeArray[row][col].left.setNode(this.treeArray[row][col-1]);
+			this.treeArray[row][col].directions.get("left").setNode(this.treeArray[row][col-1]);
 			//The previous node's right points to this node
-			this.treeArray[row][col-1].right.setNode(this.treeArray[row][col]);
+			this.treeArray[row][col-1].directions.get("right").setNode(this.treeArray[row][col]);
 		}
 	}
 

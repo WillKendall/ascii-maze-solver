@@ -1,4 +1,4 @@
-package solver;
+package solver.model;
 
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
