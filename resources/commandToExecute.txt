@@ -1,3 +1,5 @@
 curl -H "Content-Type:application/json; charset=utf-8"  -X POST 'http://localhost:8080/smartface/api/email/test?arg1=ffdfa&arg2=test2' -d '{"name":"me","lastName":"me last"}'
 
 curl -H "Content-Type:application/json; charset=utf-8"  -X POST 'http://localhost:8080/solver' -d '[	"firstrow", "secondrow" ]'
+
+curl -H "Content-Type:application/json; charset=utf-8"  -X POST 'http://localhost:8080/solver' -d '[	"+-+-+-+-+-+-+-+", "&     |   |   |", "+ +-+-+ + + +-+", "| |   | | |   |", "+ + + + + +-+ +", "|   |   |     |", "+-+-+-+-+ +-+ +", "|         |   |", "+ +-+-+-+-+-+-+", "|   |         |", "+-+ +-+-+-+ + +", "|   |   |   | |", "+ +-+ + + +-+ +", "|     |   |   *", "+-+-+-+-+-+-+-+" ]'

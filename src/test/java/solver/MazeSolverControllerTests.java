@@ -18,6 +18,7 @@ package solver;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -58,9 +59,9 @@ public class MazeSolverControllerTests {
 
         this.mockMvc.perform(post("/solver")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content("[	\"+-+-+-+-+-+-+-+\", \"&     |   |   |\", \" + +-+-+ + + +-+\", \"| |   | | |   |\", \"+ + + + + +-+ +\", \"|   |   |     |\", \"+-+-+-+-+ +-+ +\", \"|         |   |\", \"+ +-+-+-+-+-+-+\", \"|   |         |\", \"+-+ +-+-+-+ + +\", \"|   |   |   | |\", \"+ +-+ + + +-+ +\", \"|     |   |   *\", \"+-+-+-+-+-+-+-+\" ]"))
+                    .content("[	\"+-+-+-+-+-+-+-+\", \"&     |   |   |\", \"+ +-+-+ + + +-+\", \"| |   | | |   |\", \"+ + + + + +-+ +\", \"|   |   |     |\", \"+-+-+-+-+ +-+ +\", \"|         |   |\", \"+ +-+-+-+-+-+-+\", \"|   |         |\", \"+-+ +-+-+-+ + +\", \"|   |   |   | |\", \"+ +-+ + + +-+ +\", \"|     |   |   *\", \"+-+-+-+-+-+-+-+\" ]"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("+-+-+-+-+-+-+-+"));
+                .andExpect(content().json("{\"steps\":[\"right\",\"down\",\"down\",\"down\",\"down\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"right\",\"right\",\"up\",\"up\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"down\",\"down\",\"down\",\"down\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"down\",\"down\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"down\",\"down\",\"right\"]}"));
     }
 
 }

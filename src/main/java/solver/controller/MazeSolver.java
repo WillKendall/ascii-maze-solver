@@ -132,7 +132,7 @@ public class MazeSolver {
 		//This routine reverses the order of the path
 		CorrectPath path = new CorrectPath();
 		while (!reversedPath.isEmpty())	{
-			path.add(reversedPath.poll());
+			path.add(reversedPath.removeLast());
 		}
 		return path;
 	}
