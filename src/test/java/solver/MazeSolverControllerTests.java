@@ -64,4 +64,34 @@ public class MazeSolverControllerTests {
                 .andExpect(content().json("{\"steps\":[\"right\",\"down\",\"down\",\"down\",\"down\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"right\",\"right\",\"up\",\"up\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"down\",\"down\",\"down\",\"down\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"down\",\"down\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"down\",\"down\",\"right\"]}"));
     }
 
+    @Test
+    public void paramMazeWithInternalEntranceAndExit() throws Exception {
+
+        this.mockMvc.perform(post("/solver")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("[ \"+-+-+-+-+-+-+-+\", \"|     |   |   |\", \"+ +-+-+ + + +-+\", \"| |   | | |   |\", \"+ + + + + +-+ +\", \"|   |   |   & |\", \"+-+-+-+-+ +-+ +\", \"|         |   |\", \"+ +-+-+-+-+-+-+\", \"|   |         |\", \"+-+ +-+-+-+ + +\", \"|  *|   |   | |\", \"+ +-+ + + +-+ +\", \"|     |   |   |\", \"+-+-+-+-+-+-+-+\" ]"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("{\"steps\":[\"left\",\"left\",\"left\",\"down\",\"down\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"down\",\"down\"]}"));
+    }
+
+    @Test
+    public void paramMazeWithLoops() throws Exception {
+
+        this.mockMvc.perform(post("/solver")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("[ \"+-+-+-+-+-+-+-+\", \"|     |   |   |\", \"+ +-+-+ + + +-+\", \"| |   | | |   |\", \"+ + + + + +-+ +\", \"|   |       & |\", \"+-+-+-+-+ +-+ +\", \"|         |   |\", \"+ +-+-+-+ +-+ +\", \"|   |         |\", \"+-+ +-+-+-+ + +\", \"|  *|   |   | |\", \"+ +-+ + + +-+ +\", \"|     |   |   |\", \"+-+-+-+-+-+-+-+\" ]"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("{\"steps\":[\"left\",\"left\",\"left\",\"down\",\"down\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"down\",\"down\"]}"));
+    }
+
+    @Test
+    public void paramMazeFunkyShape() throws Exception {
+
+        this.mockMvc.perform(post("/solver")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("[ \"+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+\", \"|   |   |            |       |   |\", \"+ + + + +-+-+-+ ++-+ + +-+-+ + + +\", \"| |   |         ||   | |     | | |\", \"+ +-+-+-+-+-+-+-++ +-+-+ +-+-+-+ +\", \"|   | |   |     ||         |     |\", \"+-+ + +*+ +-+ + ++-+-+-+ + + +-+-+\", \"|     | |   | | ||     | |   |   |\", \"+ +-+ +-+ + + + ++ +-+ + + +-+-+ +\", \"|   |     |   |      |   | |   | |\", \"+-+-+-+-+-+-+-+-++ + +-+-+ + + + +\", \"                 | | |   |   |   |\", \"                 + + +-+ + +-+-+-+-+\", \"                 | |     |         |\", \"                 + +-+-+-+-+-+-+-+ +\", \"                 |     |         | |\", \"                 +-+-+ +-+-+-+-+ + +\", \"                 |   |   |     | | |\", \"                 + +-+-+ + +-+-+ + +\", \"                 |       | |   | | |\", \"                 +-+ +-+ + + + + + -+-+-+-+-+-+-+-+-+\", \"                 | | |   |   |   |                  |\", \"                 + + + + + +-+-+ ++-+-+-+-+-+-+-+-+ +\", \"                 |   | |   |              | |   | | |\", \"                 +-+-+-+-+-+-+-+-++-+-+-+ + + + + + +\", \"                                  | |     | | | | | |\", \"                                  + + +-+-+ + + + + +\", \"                                  | |     | & |   | |\", \"                                  + +-+-+ +-+-+ +-+ +\", \"                                  |   |   |     | | |\", \"                                  + +-+ +-+ +-+-+ + +\", \"                                  |       |     | | |\", \"                                  + +-+-+ +-+ + + + +\", \"                                  | |   | |   |   | |\", \"                                  + + + +-+ +-+-+-+ +\", \"                                  |   |             |\", \"                                  +-+-+-+-+-+-+-+-+-+\" ]"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("{\"steps\":[\"right\",\"up\",\"up\",\"up\",\"up\",\"right\",\"right\",\"down\",\"down\",\"down\",\"down\",\"down\",\"down\",\"left\",\"left\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"down\",\"down\",\"left\",\"left\",\"down\",\"down\",\"right\",\"right\",\"right\",\"right\",\"right\",\"right\",\"right\",\"right\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"left\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"up\",\"left\",\"left\",\"down\",\"down\",\"down\",\"down\",\"left\",\"left\",\"up\",\"up\",\"left\",\"left\",\"left\",\"left\",\"down\",\"down\",\"left\",\"left\",\"left\",\"up\",\"up\",\"up\",\"up\",\"left\",\"left\",\"down\",\"down\",\"down\",\"down\",\"left\",\"left\",\"up\",\"up\",\"left\",\"left\",\"up\",\"up\",\"left\",\"left\",\"down\"]}"));
+    }
+
 }
