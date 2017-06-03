@@ -30,3 +30,9 @@ in the context of this app.
 The maze must be 2 dimensional.
 Each node in the maze can have up to four adjoining directions.
     (No diagonal movement, square grid based only.)
+
+To compile the code use the following command in the project's root directory:
+./gradlew build
+
+To run the web service use the following command in the project's root directory:
+java -jar build/libs/asciimazesolver-0.1.0.jar
