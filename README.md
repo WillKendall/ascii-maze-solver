@@ -36,3 +36,6 @@ To compile the code use the following command in the project's root directory:
 
 To run the web service use the following command in the project's root directory:
 java -jar build/libs/asciimazesolver-0.1.0.jar
+
+
+touch
